@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+# set -e
 
 # Handle environment logic for Soroban RPC
 if [ "$NETWORK" = "testnet" ]; then

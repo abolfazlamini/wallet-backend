@@ -1,5 +1,5 @@
 # Step 1: Build Go API
-FROM golang:1.23.2-bullseye as api-build
+FROM golang:1.23.2-bullseye AS api-build
 ARG GIT_COMMIT
 
 WORKDIR /src/wallet-backend

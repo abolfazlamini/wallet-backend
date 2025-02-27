@@ -60,8 +60,8 @@ func (sv *StellarSignatureVerifier) VerifySignature(ctx context.Context, signatu
 		return ErrStellarSignatureNotVerified
 	}
 
-	// 2 seconds
-	err = VerifyGracePeriodSeconds(t, 2*time.Second)
+	// TODO: turn it to 2-5 seconds or make it Conf, 30 seconds for development
+	err = VerifyGracePeriodSeconds(t, 30*time.Second)
 	if err != nil {
 		log.Ctx(ctx).Error(err)
 		return ErrStellarSignatureNotVerified

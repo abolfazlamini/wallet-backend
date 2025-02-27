@@ -22,6 +22,7 @@ var (
 	ErrFeeExceedsMaximumBaseFee            = errors.New("fee exceeds maximum base fee to sponsor")
 	ErrNoSignaturesProvided                = errors.New("should have at least one signature")
 	ErrAccountNotFound                     = errors.New("account not found")
+	ErrEntryNotFoundForAccountPublicKey    = errors.New("entry not found for account public key")
 )
 
 type ErrOperationNotAllowed struct {
@@ -61,7 +62,7 @@ func (s *accountSponsorshipService) SponsorAccountCreationTransaction(ctx contex
 	if err == nil {
 		return "", "", ErrAccountAlreadyExists
 	}
-	if !errors.Is(err, ErrAccountNotFound) {
+	if !(err.Error() == ErrEntryNotFoundForAccountPublicKey.Error()) {
 		return "", "", fmt.Errorf("getting details for account %s: %w", accountToSponsor, err)
 	}
 

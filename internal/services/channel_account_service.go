@@ -18,7 +18,7 @@ import (
 const (
 	maxRetriesForChannelAccountCreation = 50
 	sleepDelayForChannelAccountCreation = 10 * time.Second
-	rpcHealthCheckTimeout = 5 * time.Minute // We want a slightly longer timeout to give time to rpc to catch up to the tip when we start wallet-backend
+	rpcHealthCheckTimeout               = 5 * time.Minute // We want a slightly longer timeout to give time to rpc to catch up to the tip when we start wallet-backend
 )
 
 type ChannelAccountService interface {
@@ -69,7 +69,7 @@ func (s *channelAccountService) EnsureChannelAccounts(ctx context.Context, numbe
 
 		ops = append(ops, &txnbuild.CreateAccount{
 			Destination:   kp.Address(),
-			Amount:        "1",
+			Amount:        "20",
 			SourceAccount: distributionAccountPublicKey,
 		})
 		channelAccountsToInsert = append(channelAccountsToInsert, &store.ChannelAccount{
